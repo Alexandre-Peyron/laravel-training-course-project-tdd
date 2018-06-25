@@ -8,6 +8,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ViewTransactionsTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * @test
      */
