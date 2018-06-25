@@ -14,4 +14,11 @@ class TransactionsController extends Controller
 
         return view('transactions.index', compact('transactions'));
     }
+
+    public function store()
+    {
+        Transaction::create(request()->all());
+
+        return redirect('/transactions');
+    }
 }
