@@ -9,6 +9,7 @@
                     <tr>
                         <td>Date</td>
                         <td>Description</td>
+                        <td>Catégorie</td>
                         <td>Montant</td>
                     </tr>
                 </thead>
@@ -17,6 +18,8 @@
                         <tr>
                             <td>{{ $transaction->created_at->format('d-m-Y') }}</td>
                             <td>{{ $transaction->description }}</td>
+                            <td>{{ $transaction->category->name }}</td>
+                            <td></td>
                         </tr>
                     @endforeach
                 </tbody>

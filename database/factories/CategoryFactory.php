@@ -13,11 +13,8 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\Transaction::class, function (Faker $faker) {
+$factory->define(App\Category::class, function (Faker $faker) {
     return [
-        'description' => $faker->sentence(4),
-        'category_id' => function() {
-            return factory(App\Category::class)->create()->id;
-        }
+        'name' => $faker->word,
     ];
 });
