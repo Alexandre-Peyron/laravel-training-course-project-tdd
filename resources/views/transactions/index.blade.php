@@ -19,7 +19,7 @@
                             <td>{{ $transaction->created_at->format('d-m-Y') }}</td>
                             <td>{{ $transaction->description }}</td>
                             <td>{{ $transaction->category->name }}</td>
-                            <td></td>
+                            <td>{{ $transaction->amount }}</td>
                         </tr>
                     @endforeach
                 </tbody>
