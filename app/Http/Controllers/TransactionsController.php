@@ -26,6 +26,16 @@ class TransactionsController extends Controller
     }
 
     /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function create()
+    {
+        $categories = Category::all();
+
+        return view('transactions.create', compact('categories'));
+    }
+
+    /**
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store()
