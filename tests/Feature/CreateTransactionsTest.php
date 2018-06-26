@@ -21,4 +21,26 @@ class CreateTransactionsTest extends TestCase
         $this->get('/transactions')
             ->assertSee($transaction->description);
     }
+
+    /**
+     * @test
+     */
+    public function itCannotCreateTransactionsWithoutADescription()
+    {
+        $transaction = factory('App\Transaction')->make(['description' => null]);
+
+        $this->withExceptionHandling()->post('/transactions', $transaction->toArray())
+            ->assertSessionHasErrors('description');
+    }
+
+    /**
+     * @test
+     */
+    public function itCannotCreateTransactionsWithoutACategory()
+    {
+        $transaction = factory('App\Transaction')->make(['category_id' => null]);
+
+        $this->withExceptionHandling()->post('/transactions', $transaction->toArray())
+            ->assertSessionHasErrors('category_id');
+    }
 }
