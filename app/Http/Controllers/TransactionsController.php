@@ -32,7 +32,8 @@ class TransactionsController extends Controller
     {
         $this->validate(request(), [
            'description' => 'required',
-           'category_id' => 'required'
+           'category_id' => 'required',
+           'amount'      => 'required|numeric'
         ]);
 
         Transaction::create(request()->all());

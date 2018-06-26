@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
 {
-    public $fillable = ['description', 'category_id'];
+    public $fillable = ['description', 'category_id', 'amount'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

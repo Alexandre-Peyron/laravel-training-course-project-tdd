@@ -43,4 +43,26 @@ class CreateTransactionsTest extends TestCase
         $this->withExceptionHandling()->post('/transactions', $transaction->toArray())
             ->assertSessionHasErrors('category_id');
     }
+
+    /**
+     * @test
+     */
+    public function itCannotCreateTransactionsWithoutAnAmount()
+    {
+        $transaction = factory('App\Transaction')->make(['amount' => null]);
+
+        $this->withExceptionHandling()->post('/transactions', $transaction->toArray())
+            ->assertSessionHasErrors('amount');
+    }
+
+    /**
+     * @test
+     */
+    public function itCannotCreateTransactionsWithoutAValidAmount()
+    {
+        $transaction = factory('App\Transaction')->make(['amount' => 'abc']);
+
+        $this->withExceptionHandling()->post('/transactions', $transaction->toArray())
+            ->assertSessionHasErrors('amount');
+    }
 }
