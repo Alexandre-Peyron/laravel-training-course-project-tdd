@@ -14,6 +14,7 @@
 Route::get('/transactions/create', 'TransactionsController@create');
 Route::get('/transactions/{category?}', 'TransactionsController@index');
 Route::post('/transactions', 'TransactionsController@store');
+Route::get('/transactions/{transaction}/edit', 'TransactionsController@edit');
 Route::put('/transactions/{transaction}', 'TransactionsController@update');
 
 Route::get('/', function () {

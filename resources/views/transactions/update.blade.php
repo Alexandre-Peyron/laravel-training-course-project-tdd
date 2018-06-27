@@ -7,25 +7,28 @@
                 Création Transaction
             </div>
             <div class="panel-body">
-                <form action="/transactions" method="POST">
+                <form action="/transactions/{{ $transaction->id }}" method="POST">
+                    {{ method_field('PUT') }}
                     {{ csrf_field() }}
                     <div class="form-group {{ $errors->has('description') ? 'has-error' : '' }}">
                         <label for="description">Description</label>
-                        <input type="text" name="description" class="form-control" value="{{ old('description') }}">
+                        <input type="text" name="description" class="form-control" value="{{ old('description') ?: $transaction->description }}">
                     </div>
                     <div class="form-group {{ $errors->has('amount') ? 'has-error' : '' }}">
                         <label for="amount">Montant</label>
-                        <input type="text" name="amount" class="form-control" value="{{ old('amount') }}">
+                        <input type="text" name="amount" class="form-control" value="{{ old('amount') ?: $transaction->amount }}">
                     </div>
                     <div class="form-group {{ $errors->has('category_id') ? 'has-error' : '' }}">
                         <label for="category_id">Catégorie</label>
                         <select name="category_id" class="form-control">
                             @foreach($categories as $category)
-                                <option value="{{ $category->id }}" >{{ $category->name }}</option>
+                                <option value="{{ $category->id }}" {{ $category->id == (old('category_id') ?: $transaction->category_id) ?  'selected' : '' }} >
+                                    {{ $category->name }}
+                                </option>
                             @endforeach
                         </select>
                     </div>
-                    <button class="btn btn-success" type="submit">Sauvegarder</button>
+                    <button class="btn btn-success" type="submit">Mettre à jour</button>
                 </form>
             </div>
         </div>

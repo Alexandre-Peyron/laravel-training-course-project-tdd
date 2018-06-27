@@ -54,6 +54,18 @@ class TransactionsController extends Controller
     /**
      * @param Transaction $transaction
      *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit(Transaction $transaction)
+    {
+        $categories = Category::all();
+
+        return view('transactions.update', compact('categories', 'transaction'));
+    }
+
+    /**
+     * @param Transaction $transaction
+     *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(Transaction $transaction)
