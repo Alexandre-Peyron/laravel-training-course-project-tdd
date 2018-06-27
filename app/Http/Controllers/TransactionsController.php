@@ -80,4 +80,17 @@ class TransactionsController extends Controller
 
         return redirect('/transactions');
     }
+
+    /**
+     * @param Transaction $transaction
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Exception
+     */
+    public function destroy(Transaction $transaction)
+    {
+        $transaction->delete();
+
+        return redirect('/transactions');
+    }
 }
